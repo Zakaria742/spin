@@ -22,8 +22,8 @@ void draw_circle(float length, char *character, int total_choices, float aor){ /
   else h = (int)length%hpos_y;
   int k = 0;
   int color[3] = {0};
-  for(float i = aor; i < 2*PI+aor; i+=0.05/h){
-    int temp_h = 0;
+  for(float i = aor; i < 2*PI+aor; i+=0.1/h){
+    int temp_h = 3;
     if(i-aor >= div*k) {
       color[0] = colors[k];
       color[1] = colors[k+1];
@@ -31,8 +31,8 @@ void draw_circle(float length, char *character, int total_choices, float aor){ /
       k++;
     }
     while(temp_h <= h-1){
-      int x = temp_h*cos(i)*1.7 + hpos_x +1;
-      int y = temp_h*sin(i) + hpos_y + 1;
+      int x = (temp_h)*cos(i)*1.7 + hpos_x +1;
+      int y = (temp_h)*sin(i) + hpos_y + 1;
       for(int l = -1; l <= 1; l++){
         printf("\x1b[%d;%df\x1b[38;2;%d;%d;%dm%s\x1b[0m", (y+l), (x+l), color[0], color[1], color[2],character);
       }
@@ -51,7 +51,6 @@ void init(int total_choices){
   srand(time(0));
   system("clear");
   puts("\x1b[?25l");
-  setvbuf(stdout, NULL, _IONBF, 0);
   init_color(total_choices);
 }
 
@@ -87,7 +86,7 @@ void put_choices(char **choices, int total, int length, float angle){
   int k = 0;
   int word_len =  length*div;
   for(float i = angle; i < PI*2+angle; i+=0.01){
-    x = length*cos(i)*1.7 + hpos_x ;
+    x = length*cos(i)*1.7 + hpos_x - div*k*0.5;
     y = length*sin(i) + hpos_y;
     if(i-angle >= div*(k+0.5) && k != total){
       printf("\x1b[%d;%df\x1b[48;2;%d;%d;%dm%.*s\x1b[0m", y, x, colors[k], colors[k+1], colors[k+2], word_len,choices[k]);
@@ -104,7 +103,7 @@ void draw_point(float length, char *character, float angle){
   int x = 0, y = 0;
   x = h*cos(angle)*1.7 + hpos_x;
   y = h*sin(angle) + hpos_y;
-  printf("\x1b[%d;%df%s", y, x, character);
+  fprintf(stderr, "\x1b[%d;%df%s", y, x, character);
 
 
 }

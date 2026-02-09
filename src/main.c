@@ -10,14 +10,15 @@ int main(int argc, char **argv){
     fprintf(stderr, "A file containing choices needs to be provided: spin <path_to_file>\n");
     exit(-1);
   }
+  init(3);
   read_choices(argv[1], &choices_info);
   tinfo Tinfo = {0};
   getTinfo(&Tinfo);
-  init(3);
   float starting_pos = rand()%200;
   float angle_starting_position = rand()%200;
   draw_circle(-1, "█", choices_info.total, angle_starting_position);
   put_choices(choices_info.words, choices_info.total, Tinfo.rows/3 - 5, angle_starting_position);
+  puts("\n");
   float j = 0;
   for(float i = 0; 1 ; i+=INC_R){
     draw_point(Tinfo.rows/2 - 5, "\x1b[38;2;223;98;38m██\x1b[0m", i+starting_pos);
