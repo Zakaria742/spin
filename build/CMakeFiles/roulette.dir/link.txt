@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/roulette.dir/src/main.c.o CMakeFiles/roulette.dir/src/utils.c.o -o roulette  -lm 

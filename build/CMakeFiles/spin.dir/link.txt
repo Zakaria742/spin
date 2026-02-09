@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/spin.dir/src/main.c.o CMakeFiles/spin.dir/src/utils.c.o -o spin  -lm 

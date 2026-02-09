@@ -1,0 +1,3 @@
+/home/aira/Projects/roulette/build/CMakeFiles/spin.dir
+/home/aira/Projects/roulette/build/CMakeFiles/edit_cache.dir
+/home/aira/Projects/roulette/build/CMakeFiles/rebuild_cache.dir
